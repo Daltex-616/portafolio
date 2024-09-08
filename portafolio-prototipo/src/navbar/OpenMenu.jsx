@@ -1,17 +1,20 @@
 import React, { useState } from "react";
+import "../public/navbar.css";
 
 export const OpenMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <div>
-      <button onClick={toggleMenu}>
+      <button className="header__open-nav-button" onClick={toggleMenu}>
         {isOpen ? "X" : "="}
       </button>
       {isOpen && (
-        <nav>
+        <nav className="header__mobile-nav">
           <ul>
             <li>
               <a href="#home">Home</a>

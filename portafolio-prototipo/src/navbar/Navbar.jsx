@@ -1,19 +1,30 @@
-import React from 'react'
-import { useState } from 'react'
-import { OpenMenu } from './OpenMenu'
-export const Navbar = () => { 
-   
-    
+import { useRef } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import "../public/navbar.css";
+
+export const Navbar = () => {
+  const navRef = useRef();
+
+  const showNavbar = () => {
+    navRef.current.classList.toggle("responsive_nav");
+  };
   return (
-    <div>
-        <header className='header'>
-            <div>
-                <img src="https://pbs.twimg.com/profile_images/1717245025505914880/hmTsV_yO_400x400.jpg" alt="" />
-            </div>
-            <OpenMenu/>
-           
-        </header>
-        
-    </div>
-  )
-}
+    <>
+      <header>
+        <h3>LOGO</h3>
+        <nav ref={navRef}>
+          <a href="/#">Home</a>
+          <a href="/#">My work</a>
+          <a href="/#">Blog</a>
+          <a href="/#">About me</a>
+          <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+            <FaTimes />
+          </button>
+        </nav>
+        <button className="nav-btn" onClick={showNavbar}>
+          <FaBars />
+        </button>
+      </header>
+    </>
+  );
+};
